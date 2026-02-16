@@ -28,7 +28,46 @@
   </head>
 
   <body>
-    
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 px-4 shadow-lg navbar bg-base-100 md:px-8">
+
+      <div class="navbar-start">
+        <a href="./index.html" class="text-xl font-bold md:text-2xl text-primary md:ml-25">SwiftCart</a>
+      </div>
+
+      <!-- Center: Menu Items -->
+      <!-- Desktop Menu -->
+      <div class="hidden navbar-center lg:flex">
+        <ul class="gap-2 px-1 menu menu-horizontal">
+          <li><a href="./index.html" class="font-medium link-primary">Home</a></li>
+          <li><a href="#products" class="font-medium">Products</a></li>
+          <li><a href="#about" class="font-medium">About</a></li>
+          <li><a href="#contact" class="font-medium">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Right: Cart Icon & Mobile Menu -->
+      <div class="gap-2 navbar-end">
+        <!-- Cart Icon with Badge -->
+        <button class="btn btn-ghost btn-circle indicator md:mr-25">
+          <!-- <span class="text-xs indicator-item badge badge-primary"></span> -->
+          <i class="text-lg fas fa-shopping-cart"></i>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <div class="dropdown dropdown-end lg:hidden">
+          <button tabindex="0" class="btn btn-ghost btn-circle">
+            <i class="text-lg fas fa-bars"></i>
+          </button>
+          <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <script src="script.js"></script>
   </body>

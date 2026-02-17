@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- title-->
+    <title>SwiftCart Products</title>
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- font integration -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- daisyui + tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="./styles.css">
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 px-4 shadow-lg navbar bg-base-100 md:px-8">
+
+        <div class="navbar-start">
+            <a href="#" class="text-xl font-bold md:text-2xl text-primary md:ml-25">SwiftCart</a>
+        </div>
+
+        <!-- Center: Menu Items -->
+        <!-- Desktop Menu -->
+        <div class="hidden navbar-center lg:flex">
+            <ul class="gap-2 px-1 menu menu-horizontal">
+                <li><a href="./index.html" class="font-medium">Home</a></li>
+                <li><a href="./products.html" class="font-medium">Products</a></li>
+                <li><a href="#about" class="font-medium">About</a></li>
+                <li><a href="#contact" class="font-medium">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Right: Cart Icon & Mobile Menu -->
+        <div class="gap-2 navbar-end">
+            <!-- Cart Icon with Badge -->
+            <button class="btn btn-ghost btn-circle indicator md:mr-25" onclick="toggleCart()">
+                <span class="text-xs indicator-item badge badge-primary" id="cartCount">0</span>
+                <i class="text-lg fas fa-shopping-cart"></i>
+            </button>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="dropdown dropdown-end lg:hidden">
+                <button tabindex="0" class="btn btn-ghost btn-circle">
+                    <i class="text-lg fas fa-bars"></i>
+                </button>
+                <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./products.html">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+    <!-- Products Section -->
+    <section class="py-12 bg-gray-50 md:py-20" id="products">
+      <div class="container px-4 mx-auto">
+        <!-- Section Title -->
+          <h2 class="mb-12 text-3xl font-bold text-center text-gray-800 md:mb-16 md:text-5xl">Our Products</h2>
+
+        <!-- Category Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-3 mb-8">
+          <button class="btn btn-sm md:btn-md btn-primary category-btn active" data-category="all" onclick="filterByCategory('all')">
+            All Products
+          </button>
+          <div id="categoryButtons" class="flex flex-wrap gap-3">
+            <!-- Category buttons will be inserted here -->
+          </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="productsLoader" class="flex items-center justify-center my-12">
+          <span class="loading loading-spinner loading-lg text-primary"></span>
+        </div>
+
+        <!-- Products Grid -->
+        <div id="productsGrid" class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <!-- Product cards will be inserted here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+      <div class="modal-box">
+        <h3 class="mb-4 text-lg font-bold">Shopping Cart</h3>
+        
+        <div id="cartItems" class="mb-6 space-y-4 overflow-y-auto max-h-96">
+          <!-- Cart items will be displayed here -->
+        </div>
+
+        <!-- Empty Cart Message -->
+        <div id="emptyCartMessage" class="py-8 text-center">
+          <p class="mb-4 text-gray-600">Your cart is empty</p>
+        </div>
+
+        <!-- Cart Summary -->
+        <div id="cartSummary" class="pt-4 border-t" style="display: none;">
+          <div class="flex justify-between mb-2">
+            <span>Subtotal:</span>
+            <span id="subtotal">$0.00</span>
+          </div>
+          <div class="flex justify-between mb-4 text-lg font-bold">
+            <span>Total:</span>
+            <span id="cartTotal">$0.00</span>
+          </div>
+          <button class="w-full mb-2 btn btn-primary">Checkout</button>
+        </div>
+
+        <div class="modal-action">
+          <button class="btn btn-ghost" onclick="document.getElementById('cartModal').close()">Close</button>
+        </div>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </div>
+
+    <!-- Product Details Modal -->
+    <div id="productModal" class="modal">
+      <div class="max-w-2xl modal-box">
+        <h2 class="mb-4 text-2xl font-bold" id="modalTitle">Product Details</h2>
+        
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <!-- Product Image -->
+          <div class="flex items-center justify-center p-4 bg-gray-100 rounded-lg">
+            <img id="modalImage" src="" alt="Product" class="object-contain max-h-80">
+          </div>
+
+          <!-- Product Info -->
+          <div>
+            <p id="modalCategory" class="mb-3 badge badge-primary"></p>
+            
+            <p id="modalDescription" class="mb-4 text-gray-600"></p>
+
+            <!-- Price -->
+            <div class="mb-4">
+              <span class="text-3xl font-bold text-primary">$</span>
+              <span id="modalPrice" class="text-3xl font-bold text-primary"></span>
+            </div>
+
+            <!-- Rating -->
+            <div class="mb-4">
+              <div class="flex items-center gap-2">
+                <div id="modalRating" class="flex gap-1"></div>
+                <span id="modalRatingValue" class="text-sm text-gray-600"></span>
+              </div>
+            </div>
+
+            <!-- Quantity Selector -->
+            <div class="flex items-center gap-3 mb-4">
+              <span>Quantity:</span>
+              <div class="join">
+                <button class="btn btn-sm join-item" onclick="decreaseQuantity()">−</button>
+                <input type="text" id="quantityInput" value="1" readonly class="w-16 text-center input input-bordered input-sm join-item">
+                <button class="btn btn-sm join-item" onclick="increaseQuantity()">+</button>
+              </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex gap-2">
+              <button class="flex-1 btn btn-primary" onclick="addToCartFromModal()">Add to Cart</button>
+              <button class="flex-1 btn btn-outline">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-action">
+          <button class="btn btn-ghost" onclick="document.getElementById('productModal').close()">Close</button>
+        </div>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

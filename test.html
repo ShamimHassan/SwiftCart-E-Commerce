@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+<body>
+    <h1>Testing FakeStore API</h1>
+    <div id="output"></div>
+    
+    <script>
+        async function testAPI() {
+            const result = {
+                categories: await fetch('https://fakestoreapi.com/products/categories').then(r => r.json()),
+                menClothing: await fetch('https://fakestoreapi.com/products/category/men\'s clothing').then(r => r.json()),
+                womenClothing: await fetch('https://fakestoreapi.com/products/category/women\'s clothing').then(r => r.json()),
+            };
+            document.getElementById('output').innerHTML = '<pre>' + JSON.stringify(result, null, 2) + '</pre>';
+        }
+        testAPI();
+    </script>
+</body>
+</html>

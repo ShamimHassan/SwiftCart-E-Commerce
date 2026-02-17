@@ -1,3 +1,196 @@
 * { 
     font-family: "Poppins", sans-serif;
 }
+
+/* Utility Classes */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Card Hover Effects */
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* Category Button Active State */
+.category-btn {
+  transition: all 0.3s ease;
+}
+
+.category-btn.active {
+  @apply text-white btn-primary border-primary;
+}
+
+/* Toast Notification */
+.toast {
+  z-index: 999;
+}
+
+/* Modal Styles */
+.modal-box {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Loading Spinner */
+.loading {
+  --size: 2rem;
+}
+
+.loading-lg {
+  --size: 3rem;
+}
+
+/* Product Grid Responsive */
+@media (max-width: 768px) {
+  .grid {
+    grid-auto-rows: auto;
+  }
+}
+
+/* Image Container Fix */
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+/* Cart Items Styling */
+#cartItems::-webkit-scrollbar {
+  width: 6px;
+}
+
+#cartItems::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+#cartItems::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+#cartItems::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Button Transitions */
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transition: all 0.3s ease;
+}
+
+/* Responsive Padding */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/* Toast Notification */
+.toast {
+  z-index: 999;
+}
+
+/* Modal Styles */
+.modal-box {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Loading Spinner */
+.loading {
+  --size: 2rem;
+}
+
+.loading-lg {
+  --size: 3rem;
+}
+
+/* Product Grid Responsive */
+@media (max-width: 768px) {
+  .grid {
+    grid-auto-rows: auto;
+  }
+}
+
+/* Image Container Fix */
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+/* Cart Items Styling */
+#cartItems::-webkit-scrollbar {
+  width: 6px;
+}
+
+#cartItems::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+#cartItems::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+#cartItems::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Button Transitions */
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transition: all 0.3s ease;
+}
+
+/* Responsive Padding */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/* Product Image Container Style */
+.product-image-container {
+  background: #f3f4f6;
+  border-radius: 16px;
+  padding: 24px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  height: 220px;
+  margin-bottom: 0.5rem;
+}
+
+.product-image-container img {
+  max-height: 160px;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.product-meta-row {
+  margin-bottom: 0.5rem;
+}

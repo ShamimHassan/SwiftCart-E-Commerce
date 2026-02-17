@@ -72,128 +72,183 @@
         </div>
     </nav>
 
-    
+
     <!-- Products Section -->
     <section class="py-12 bg-gray-50 md:py-20" id="products">
-      <div class="container px-4 mx-auto">
-        <!-- Section Title -->
-          <h2 class="mb-12 text-3xl font-bold text-center text-gray-800 md:mb-16 md:text-5xl">Our Products</h2>
+        <div class="container px-4 mx-auto">
+            <!-- Section Title -->
+            <h2 class="mb-12 text-3xl font-bold text-center text-gray-800 md:mb-16 md:text-5xl">Our Products</h2>
 
-        <!-- Category Filter Buttons -->
-        <div class="flex flex-wrap justify-center gap-3 mb-8">
-          <button class="btn btn-sm md:btn-md btn-primary category-btn active" data-category="all" onclick="filterByCategory('all')">
-            All Products
-          </button>
-          <div id="categoryButtons" class="flex flex-wrap gap-3">
-            <!-- Category buttons will be inserted here -->
-          </div>
-        </div>
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-8">
+                <button class="btn btn-sm md:btn-md btn-primary category-btn active" data-category="all"
+                    onclick="filterByCategory('all')">
+                    All Products
+                </button>
+                <div id="categoryButtons" class="flex flex-wrap gap-3">
+                    <!-- Category buttons will be inserted here -->
+                </div>
+            </div>
 
-        <!-- Loading Spinner -->
-        <div id="productsLoader" class="flex items-center justify-center my-12">
-          <span class="loading loading-spinner loading-lg text-primary"></span>
-        </div>
+            <!-- Loading Spinner -->
+            <div id="productsLoader" class="flex items-center justify-center my-12">
+                <span class="loading loading-spinner loading-lg text-primary"></span>
+            </div>
 
-        <!-- Products Grid -->
-        <div id="productsGrid" class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-          <!-- Product cards will be inserted here -->
+            <!-- Products Grid -->
+            <div id="productsGrid" class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+                <!-- Product cards will be inserted here -->
+            </div>
         </div>
-      </div>
     </section>
 
     <!-- Cart Modal -->
     <div id="cartModal" class="modal">
-      <div class="modal-box">
-        <h3 class="mb-4 text-lg font-bold">Shopping Cart</h3>
-        
-        <div id="cartItems" class="mb-6 space-y-4 overflow-y-auto max-h-96">
-          <!-- Cart items will be displayed here -->
-        </div>
+        <div class="modal-box">
+            <h3 class="mb-4 text-lg font-bold">Shopping Cart</h3>
 
-        <!-- Empty Cart Message -->
-        <div id="emptyCartMessage" class="py-8 text-center">
-          <p class="mb-4 text-gray-600">Your cart is empty</p>
-        </div>
+            <div id="cartItems" class="mb-6 space-y-4 overflow-y-auto max-h-96">
+                <!-- Cart items will be displayed here -->
+            </div>
 
-        <!-- Cart Summary -->
-        <div id="cartSummary" class="pt-4 border-t" style="display: none;">
-          <div class="flex justify-between mb-2">
-            <span>Subtotal:</span>
-            <span id="subtotal">$0.00</span>
-          </div>
-          <div class="flex justify-between mb-4 text-lg font-bold">
-            <span>Total:</span>
-            <span id="cartTotal">$0.00</span>
-          </div>
-          <button class="w-full mb-2 btn btn-primary">Checkout</button>
-        </div>
+            <!-- Empty Cart Message -->
+            <div id="emptyCartMessage" class="py-8 text-center">
+                <p class="mb-4 text-gray-600">Your cart is empty</p>
+            </div>
 
-        <div class="modal-action">
-          <button class="btn btn-ghost" onclick="document.getElementById('cartModal').close()">Close</button>
+            <!-- Cart Summary -->
+            <div id="cartSummary" class="pt-4 border-t" style="display: none;">
+                <div class="flex justify-between mb-2">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="flex justify-between mb-4 text-lg font-bold">
+                    <span>Total:</span>
+                    <span id="cartTotal">$0.00</span>
+                </div>
+                <button class="w-full mb-2 btn btn-primary">Checkout</button>
+            </div>
+
+            <div class="modal-action">
+                <button class="btn btn-ghost" onclick="document.getElementById('cartModal').close()">Close</button>
+            </div>
         </div>
-      </div>
-      <form method="dialog" class="modal-backdrop">
-        <button>close</button>
-      </form>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
     </div>
 
     <!-- Product Details Modal -->
     <div id="productModal" class="modal">
-      <div class="max-w-2xl modal-box">
-        <h2 class="mb-4 text-2xl font-bold" id="modalTitle">Product Details</h2>
-        
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <!-- Product Image -->
-          <div class="flex items-center justify-center p-4 bg-gray-100 rounded-lg">
-            <img id="modalImage" src="" alt="Product" class="object-contain max-h-80">
-          </div>
+        <div class="max-w-2xl modal-box">
+            <h2 class="mb-4 text-2xl font-bold" id="modalTitle">Product Details</h2>
 
-          <!-- Product Info -->
-          <div>
-            <p id="modalCategory" class="mb-3 badge badge-primary"></p>
-            
-            <p id="modalDescription" class="mb-4 text-gray-600"></p>
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <!-- Product Image -->
+                <div class="flex items-center justify-center p-4 bg-gray-100 rounded-lg">
+                    <img id="modalImage" src="" alt="Product" class="object-contain max-h-80">
+                </div>
 
-            <!-- Price -->
-            <div class="mb-4">
-              <span class="text-3xl font-bold text-primary">$</span>
-              <span id="modalPrice" class="text-3xl font-bold text-primary"></span>
+                <!-- Product Info -->
+                <div>
+                    <p id="modalCategory" class="mb-3 badge badge-primary"></p>
+
+                    <p id="modalDescription" class="mb-4 text-gray-600"></p>
+
+                    <!-- Price -->
+                    <div class="mb-4">
+                        <span class="text-3xl font-bold text-primary">$</span>
+                        <span id="modalPrice" class="text-3xl font-bold text-primary"></span>
+                    </div>
+
+                    <!-- Rating -->
+                    <div class="mb-4">
+                        <div class="flex items-center gap-2">
+                            <div id="modalRating" class="flex gap-1"></div>
+                            <span id="modalRatingValue" class="text-sm text-gray-600"></span>
+                        </div>
+                    </div>
+
+                    <!-- Quantity Selector -->
+                    <div class="flex items-center gap-3 mb-4">
+                        <span>Quantity:</span>
+                        <div class="join">
+                            <button class="btn btn-sm join-item" onclick="decreaseQuantity()">−</button>
+                            <input type="text" id="quantityInput" value="1" readonly
+                                class="w-16 text-center input input-bordered input-sm join-item">
+                            <button class="btn btn-sm join-item" onclick="increaseQuantity()">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="flex gap-2">
+                        <button class="flex-1 btn btn-primary" onclick="addToCartFromModal()">Add to Cart</button>
+                        <button class="flex-1 btn btn-outline">Buy Now</button>
+                    </div>
+                </div>
             </div>
 
-            <!-- Rating -->
-            <div class="mb-4">
-              <div class="flex items-center gap-2">
-                <div id="modalRating" class="flex gap-1"></div>
-                <span id="modalRatingValue" class="text-sm text-gray-600"></span>
-              </div>
+            <div class="modal-action">
+                <button class="btn btn-ghost" onclick="document.getElementById('productModal').close()">Close</button>
             </div>
-
-            <!-- Quantity Selector -->
-            <div class="flex items-center gap-3 mb-4">
-              <span>Quantity:</span>
-              <div class="join">
-                <button class="btn btn-sm join-item" onclick="decreaseQuantity()">−</button>
-                <input type="text" id="quantityInput" value="1" readonly class="w-16 text-center input input-bordered input-sm join-item">
-                <button class="btn btn-sm join-item" onclick="increaseQuantity()">+</button>
-              </div>
-            </div>
-
-            <!-- Buttons -->
-            <div class="flex gap-2">
-              <button class="flex-1 btn btn-primary" onclick="addToCartFromModal()">Add to Cart</button>
-              <button class="flex-1 btn btn-outline">Buy Now</button>
-            </div>
-          </div>
         </div>
-
-        <div class="modal-action">
-          <button class="btn btn-ghost" onclick="document.getElementById('productModal').close()">Close</button>
-        </div>
-      </div>
-      <form method="dialog" class="modal-backdrop">
-        <button>close</button>
-      </form>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
     </div>
+    
+   <!-- Newsletter + Footer -->
+    <footer class="pt-16 pb-8 text-gray-300 bg-gradient-to-b from-gray-900 to-black">
+        <div class="px-6 mx-auto max-w-7xl lg:px-8">
+            <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+                <div>
+                    <h3 class="mb-6 text-2xl font-bold text-white">SwiftCart</h3>
+                    <p class="text-gray-400">Your one-stop shop for all your fashion and lifestyle needs. Quality products, fast delivery, and excellent support.</p>
+                </div>
+
+                <div>
+                    <h4 class="mb-6 text-lg font-semibold text-white">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="transition hover:text-white">Home</a></li>
+                        <li><a href="#" class="transition hover:text-white">Products</a></li>
+                        <li><a href="#" class="transition hover:text-white">About</a></li>
+                        <li><a href="#" class="transition hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="mb-6 text-lg font-semibold text-white">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="transition hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="transition hover:text-white">Shipping</a></li>
+                        <li><a href="#" class="transition hover:text-white">Returns</a></li>
+                        <li><a href="#" class="transition hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="mb-6 text-lg font-semibold text-white">Newsletter</h4>
+                    <p class="mb-4 text-gray-400">Get the latest trends & exclusive offers weekly.</p>
+                    <form class="flex flex-col gap-3">
+                        <input type="email" placeholder="Your email address"
+                            class="px-5 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+                        <button
+                            class="py-3 font-medium text-white transition rounded-lg bg-primary hover:bg-primaryDark">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="pt-8 mt-16 text-sm text-center text-gray-500 border-t border-gray-800">
+                © 2026 SwiftCart, Inc. All rights reserved.
+                <div class="flex justify-center gap-6 mt-4">
+                    <a href="#" class="hover:text-white">Facebook</a>
+                    <a href="#" class="hover:text-white">Twitter</a>
+                    <a href="#" class="hover:text-white">Instagram</a>
+                    <a href="#" class="hover:text-white">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
